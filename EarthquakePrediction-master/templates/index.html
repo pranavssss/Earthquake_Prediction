@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Earthquake Detection</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<script>
+function preprocessDate() {
+    var dateInput = document.getElementById('date');
+    dateInput.value = mapdateTotime(dateInput.value);
+    return true;
+}
+</script>
+</head>
+<body>
+    <div class="container">
+        <h1>Earthquake Detection</h1>
+	<form action="{{ url_for('detect') }}" method="POST" onsubmit="return preprocessDate()">
+	    <label for="longitude">Longitude:</label>
+            <input type="text" id="longitude" name="longitude" required><br>
+            
+            <label for="latitude">Latitude:</label>
+            <input type="text" id="latitude" name="latitude" required><br>
+            
+            <label for="date">Date:</label>
+            <input type="text" id="date" name="date" required><br>
+            
+            <label for="depth">Depth:</label>
+            <input type="text" id="depth" name="depth" required><br>
+            
+            <input type="submit" value="Detect">
+        </form>
+        <br>
+        <a href="/helpline">Disaster Management Helpline</a>
+    </div>
+</body>
+</html>
